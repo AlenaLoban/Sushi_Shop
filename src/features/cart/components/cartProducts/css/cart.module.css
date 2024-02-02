@@ -1,0 +1,140 @@
+.wrapper {
+  margin: 30px auto;
+  max-width: 700px;
+}
+.wrapper__box {
+  box-shadow: 0px 0px 10px #e64d45, 0px 0px 10px #e64d45 inset;
+  padding: 50px 30px;
+  border: 1px solid #e64d45;
+  margin: 10px;
+}
+.wrapper h2 {
+  padding-bottom: 20px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  transition: all 1s ease 0.3s;
+}
+.top div {
+  color: gray;
+  cursor: pointer;
+  display: inline-block;
+}
+.top div:hover {
+  color: white;
+}
+
+.cartProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 20px 0 25px 0;
+}
+
+.card {
+  display: flex;
+  gap: 50px;
+  max-height: 165px;
+  overflow: hidden;
+}
+@media (max-width: 870px) {
+  .card {
+    gap: 15px;
+  }
+}
+.card__img {
+  flex: 0 0 25%;
+  padding-bottom: 140px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 1s ease 0.5s;
+}
+.card__img:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.info {
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.info__title {
+  flex: 1 1 auto;
+  padding-top: 15px;
+}
+.info__parameters {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 20px 0;
+}
+@media (max-width: 460px) {
+  .info__parameters {
+    gap: 15px;
+  }
+}
+.info__parameters div {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.box__button {
+  border: none;
+  background-color: #e64d45;
+  border-radius: 50px;
+  padding: 5px 5px 3px 5px;
+}
+.box__button:active {
+  transform: translateY(2px);
+}
+.box__button:disabled {
+  background-color: #131313;
+}
+.box__button:disabled:active {
+  transform: none;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: all 1s ease 0.5s;
+}
+.total button {
+  background-color: #e64d45;
+  border-radius: 30px;
+  padding: 15px;
+  cursor: pointer;
+}
+.total button {
+  color: white;
+  border: none;
+  cursor: pointer;
+  background-color: #e64d45;
+  font-size: 16px;
+}
+.total button:hover {
+  border: 1.5px solid #683436;
+  background-color: #131313;
+}
+.total button:active {
+  transform: translateY(4px);
+}
+
+.emptyCart {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  place-content: center;
+}
+.emptyCart img {
+  max-width: 675px;
+  max-height: 450px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}

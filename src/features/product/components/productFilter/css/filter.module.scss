@@ -1,0 +1,27 @@
+.sort {
+  position: relative;
+  &__placeholder {
+    display: flex;
+    align-items: center;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  .popup {
+    position: absolute;
+    right: 0;
+    margin-top: 25px;
+    background-color: #e64d45ea;
+    padding: 5px;
+    li {
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 30px;
+      &:hover {
+        background-color: #683436;
+      }
+    }
+  }
+}
