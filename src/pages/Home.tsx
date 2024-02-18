@@ -7,9 +7,9 @@ const Home: React.FC = () => {
         className={style.home__bg}
         style={{ backgroundImage: "url(" + "png-image.png" + ")" }}
       ></div>
-      <img src="home-sushi.png" alt="" />
       <div className={style.home__body}>
         <h1>Sushi Town</h1>
+        <img src="home-sushi.png" alt="" />
       </div>
     </div>
   );

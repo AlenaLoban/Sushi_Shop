@@ -5,11 +5,10 @@ header {
   left: 0;
   right: 0;
   z-index: 30;
-  transition: transform 0.3s ease-in, background-color 0.3s linear;
+  transition: transform 0.5s ease-in, background-color 0.3s linear;
   width: 100%;
   &.scroll_down {
     transform: translateY(-100%);
-    // background-color: #e64d45;
   }
   &.scroll_up {
     transform: translateY(0);
@@ -97,6 +96,7 @@ header {
   gap: 5px;
   position: relative;
   transition: all 2s ease 0.5;
+
   &__box {
     position: relative;
     div {
@@ -117,32 +117,42 @@ header {
     right: 0;
     margin-top: 35px;
     background-color: #131313;
+    background-color: transparent;
+    backdrop-filter: blur(90px);
     overflow: auto;
     max-height: 400px;
     width: 385px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
     padding: 10px;
     transition: all 2s ease 0.5;
+    &__close {
+      position: absolute;
+      right: 10px;
+      width: 1.3em;
+      height: 1.3em;
+      cursor: pointer;
+    }
 
     &__clearCart {
-      &:hover {
-        transform: translateY(3px);
-      }
-      span {
+      display: flex;
+      justify-content: space-between;
+
+      p {
         padding: 0 15px;
         color: gray;
+        cursor: pointer;
+
         &:hover {
           color: white;
+          transform: translateY(3px);
         }
       }
     }
     &__prod {
       flex: 1 1 65%;
       overflow: auto;
-    }
-    &__total {
-      padding: 5px 0;
     }
     &__empty {
       display: flex;
@@ -153,6 +163,10 @@ header {
       width: 100%;
       height: 100%;
       padding-top: 20px;
+      overflow: hidden;
+      h2 {
+        font-size: 20px;
+      }
 
       img {
         width: 250px;

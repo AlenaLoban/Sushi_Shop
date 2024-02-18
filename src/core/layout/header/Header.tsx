@@ -9,15 +9,10 @@ import HeaderCallInfo from "./HeaderCallInfo";
 import HeaderMenu from "./HeaderMenu";
 
 const Header: React.FC = () => {
-  const scrollDirection = useScrollDirection();
+  const isScrollDown = useScrollDirection();
 
   return (
-    <header
-      className={cn(
-        scrollDirection === "down" ? style.scroll_down : "",
-        scrollDirection === "up" ? style.scroll_up : ""
-      )}
-    >
+    <header className={cn(isScrollDown ? style.scroll_down : style.scroll_up)}>
       <div className={cn(style.header, style.container)}>
         <div className={style.header__top}>
           <HeaderMenu />

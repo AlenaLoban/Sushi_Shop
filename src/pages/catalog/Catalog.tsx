@@ -1,21 +1,21 @@
 import style from "./css/catalog.module.scss";
-import ProductCategory from "../../features/product/components/productCategories/ProductCategory";
-import ProductFilter from "../../features/product/components/productFilter/ProductFilter";
-import AllProducts from "../../features/product/components/allProducts/AllProducts";
+import ProductCategory from "../../features/category/ProductCategory";
+import ProductFilter from "../../features/product/list/components/ProductFilter";
+import AllProducts from "../../features/product/list/components/AllProducts";
 import ButtonUp from "./ButtonUp";
 import cn from "classnames";
 import React from "react";
 import { useScrollDirection } from "../../hooks/useScrollDirection";
 
 const Catalog: React.FC = () => {
-  const scrollDirection = useScrollDirection();
+  const isScrollingDown = useScrollDirection();
 
   return (
     <div className={cn(style.container, style.catalog)}>
       <div
         className={cn(
           style.page__filter,
-          scrollDirection === "down" ? style.page__filter_down : ""
+          isScrollingDown ? style.page__filter_down : ""
         )}
       >
         <ProductCategory />

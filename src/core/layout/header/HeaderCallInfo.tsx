@@ -8,16 +8,13 @@ const HeaderCallInfo: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
-
-  const handleClickOutside = (): void => {
-    setOpen(false);
-  };
-
+  const handleClickOutside = (): void => setOpen(false);
   useOnClickOutside(ref, handleClickOutside);
+
   return (
     <div className={style.header__bottom__call} ref={ref}>
       <SlCallIn />
-      <p>7845</p>
+      <a href="tel:#7845">7845</a>
       {open ? (
         <IoIosArrowDown onClick={() => setOpen(!open)} />
       ) : (

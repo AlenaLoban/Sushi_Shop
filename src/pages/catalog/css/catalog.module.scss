@@ -7,22 +7,22 @@
   position: relative;
   transition: all 1s ease-in-out 0.5s;
   &__button {
-    display: none;
-  }
-  .show {
-    display: inline-block;
     position: fixed;
-    right: 100px;
-    top: 450px;
-    z-index: 8;
+    right: 20%;
+    top: 350px;
+    z-index: 18;
     font-size: 16px;
     padding: 10px 30px;
-    background-color: #e64d45ea;
-    border-radius: 30px;
-    transition: all 1s ease-in-out 0.5s;
     @media (max-width: 870px) {
       right: 40px;
     }
+  }
+
+  .hide {
+    display: none;
+  }
+  .show {
+    display: block;
   }
 }
 .page__filter {
@@ -33,13 +33,12 @@
   position: sticky;
   margin-bottom: 50px;
   z-index: 2;
-  top: 100px;
+  top: 110px;
   background-color: #e64d45;
   border-radius: 30px;
   transition: transform 0.3s ease-in;
   &_down {
-    // top:30px;
-    transform: translateY(-60px);
+    transform: translateY(-80px);
   }
   @media (max-width: 890px) {
     flex-direction: column;

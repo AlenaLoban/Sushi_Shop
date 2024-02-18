@@ -2,6 +2,7 @@ import { FaArrowUp } from "react-icons/fa6";
 import React, { useState, useEffect } from "react";
 import style from "./css/catalog.module.scss";
 import cn from "classnames";
+import Button from "../../core/ui/Button";
 
 const ButtonUp: React.FC = () => {
   const [scroll, setScroll] = useState(0);
@@ -17,13 +18,16 @@ const ButtonUp: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <button
+    <Button
       type="button"
-      className={cn(style.catalog__button, scroll > 700 ? style.show : "")}
       onClick={handleUpButton}
+      className={cn(
+        style.catalog__button,
+        scroll > 700 ? style.show : style.hide
+      )}
     >
       <FaArrowUp /> Вверх
-    </button>
+    </Button>
   );
 };
 export default ButtonUp;

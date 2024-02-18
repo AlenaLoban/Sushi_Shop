@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react";
+
+let isScrollDown = false;
+
 export const useScrollDirection = () => {
-  const [scrollDirection, setScrollDirection] = useState("");
   const [prevOffset, setPrevOffset] = useState(0);
 
   const toggleScrollDirection = () => {
-    let scrollY = window.scrollY;
-    if (scrollY > prevOffset && scrollY > 50) {
-      setScrollDirection("down");
-    } else if (scrollY < prevOffset && scrollY > 50) {
-      setScrollDirection("up");
-    } else {
-      setScrollDirection("");
-    }
+    const scrollY = window.scrollY;
+    //  const scrollY = event.currentTarget?.scrollY;
+    if (scrollY > prevOffset && scrollY > 50) isScrollDown = true;
+    if (scrollY < prevOffset && scrollY > 50) isScrollDown = false;
     setPrevOffset(scrollY);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", toggleScrollDirection);
+
     return () => {
       window.removeEventListener("scroll", toggleScrollDirection);
     };
   });
-  return scrollDirection;
+  
+  return isScrollDown;
 };

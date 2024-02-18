@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
-$color1: #683436;
-$color2: #e64d45;
-$color3: #c81b00de;
-$color4: #131313;
 
 * {
   padding: 0;
@@ -12,88 +8,51 @@ $color4: #131313;
 }
 body {
   font-family: "Ubuntu", sans-serif;
-  background-color: $color4;
+  background-color: #131313;
   color: white;
+  font-size: 16px;
   a {
     color: white;
     text-decoration: none;
   }
-  button {
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
 }
-
+button {
+  border-radius: 30px;
+  color: white;
+  background-color: #e64d45ea;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 .container {
   margin: 0 auto;
   max-width: 1200px;
 }
 
 .home {
-  // padding-top: 110px;
+   overflow: hidden;
   position: relative;
-  background-color: #ff6861;
-  // overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background-color: #e64d45;
   &__bg {
-    // opacity: 0.1;
-    background-position: right -35px top 38%;
-    // background-position: center;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 1600px;
     position: fixed;
     width: 100%;
     min-height: 100vh;
-    @media (max-width: 900px) {
-      background-size: 150%;
-      background-position: right -35px top 18%;
+    @media (max-width: 1180px) {
+      background-size: 1500px;
+    }
+    @media (max-width: 870px) {
+      background-size: 1000px;
     }
     @media (max-width: 500px) {
-      background-size: 180%;
+      background-size: 800px;
     }
-  }
-  // @keyframes Sushi{
-
-  //    0%{
-  //       bottom: -100%;
-
-  //    }
-  //    100%{
-  //       bottom: 10%;
-  //    }
-  // }
-  // @keyframes Sushi{
-
-  //    0%{
-  //       top: -100px;
-
-  //    }
-  //    100%{
-  //       top: 120px;
-  //    }
-  // }
-  img {
-    display: inline-block;
-    position: absolute;
-    z-index: 4;
-    // left:320px;
-    right: 50%;
-    top: -10%;
-
-    width: 300px;
-    height: 600px;
-    object-fit: contain;
-    animation-name: Sushi;
-    animation: Sushi 6s 1 ease-in;
-    @media (max-width: 900px) {
-      right: 50%;
-      top: 50%;
-    }
-    @media (max-width: 490px) {
-      right: 40%;
-      top: -5%;
+    @media (max-width: 400px) {
+      background-size: 500px;
     }
   }
 
@@ -103,24 +62,15 @@ body {
     justify-content: center;
     align-items: center;
     place-items: center;
-    // opacity: 0.9;
-    // background-color: $color4;
     background: transparent;
     backdrop-filter: blur(11px);
-    width: 100%;
-    // width: 500px;
     height: 200px;
-    top: 270px;
-    // left: 60px;
-    color: #e64d45;
-    // color:#131313;
-    z-index: 2;
+    top: 40%;
+    color: white;
+    z-index: 4;
     h1 {
       font-size: 46px;
-      background-color: #131313;
-      padding: 20px 40px;
-      // border-radius: 45px;
-      width: 100%;
+      padding: 25px 0;
       text-align: center;
     }
     button {
@@ -129,14 +79,26 @@ body {
       padding: 15px;
       cursor: pointer;
     }
-    @media (max-width: 900px) {
-      height: 220px;
-      top: 400px;
+    img {
+      display: inline-block;
+      position: absolute;
+      z-index: 7;
+      right: 50%;
+      top: -300px;
+      width: 300px;
+      height: 600px;
+      object-fit: contain;
     }
+
     @media (max-width: 490px) {
-      top: 290px;
+      height: 100px;
       h1 {
-        font-size: 36px;
+        font-size: 28px;
+        padding: 15px 0;
+      }
+      img{
+         right: 40%;
+         top: -330px;
       }
     }
   }

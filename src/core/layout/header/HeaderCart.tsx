@@ -1,34 +1,27 @@
 import { SlBasket } from "react-icons/sl";
+import { IoClose } from "react-icons/io5";
 import style from "./css/header.module.scss";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import {
   selectCart,
   clearCartItems,
-} from "../../../features/cart/components/cartProducts/slice/cartSlice";
-import CartProducts from "../../../features/cart/components/cartProducts/CartProducts";
-import CartTotal from "../../../features/cart/components/cartProducts/CartTotal";
-import { useState, useRef } from "react";
-import { useOnClickOutside } from "usehooks-ts";
-import cn from "classnames";
+} from "../../../features/cart/list/cartSlice";
+import CartItems from "../../../features/cart/list/components/CartItems";
+import CartTotal from "../../../features/cart/list/components/CartTotal";
+import { useState } from "react";
+import CartEmpty from "../../../features/cart/list/components/CartEmpty";
 
 const HeaderCart = () => {
   const [open, setOpen] = useState(false);
   const { total, cartItems } = useAppSelector(selectCart);
   const dispatch = useAppDispatch();
 
-  const ref = useRef<HTMLDivElement>(null);
-
-  const handleClickOutside = (): void => {
-    setOpen(false);
-  };
-  useOnClickOutside(ref, handleClickOutside);
-
   const totalCounter = cartItems.reduce((sum, item) => {
     return sum + item.count;
   }, 0);
 
   return (
-    <div className={style.total} ref={ref}>
+    <div className={style.total} >
       <div className={style.total__box} onClick={() => setOpen(!open)}>
         <SlBasket style={{ width: "1.5em", height: "1.5em" }} />
         {totalCounter > 0 && <div>{totalCounter}</div>}
@@ -42,14 +35,18 @@ const HeaderCart = () => {
           }).format(total)}
       </div>
       {open && (
-        <div className={cn(style.total__popup)}>
+        <div className={style.total__popup}>
+          <IoClose
+            className={style.total__popup__close}
+            onClick={() => setOpen(false)}
+          />
           {cartItems.length > 0 ? (
             <>
               <div className={style.total__popup__clearCart}>
-                <span onClick={() => dispatch(clearCartItems())}>очистить</span>
+                <p onClick={() => dispatch(clearCartItems())}>очистить</p>
               </div>
               <div className={style.total__popup__prod}>
-                <CartProducts />{" "}
+                <CartItems />{" "}
               </div>
               <div className={style.total__popup__total}>
                 <CartTotal />
@@ -57,9 +54,7 @@ const HeaderCart = () => {
             </>
           ) : (
             <div className={style.total__popup__empty}>
-              <p>Корзина пустая.</p>
-              <p>Добавьте товары.</p>
-              <img src="1.webp" alt="" />
+              <CartEmpty />
             </div>
           )}
         </div>
