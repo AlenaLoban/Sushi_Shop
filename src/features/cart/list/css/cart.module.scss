@@ -70,6 +70,12 @@
   align-items: center;
   justify-content: space-around;
   transition: all 1s ease 0.5s;
+  &__text{
+   display: flex;
+   flex-wrap: wrap;
+   gap:10px;
+  }
+
 
   button {
     color: white;

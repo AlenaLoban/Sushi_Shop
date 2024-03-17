@@ -6,6 +6,7 @@
   padding-top: 30px;
   position: relative;
   transition: all 1s ease-in-out 0.5s;
+
   &__button {
     position: fixed;
     right: 20%;
@@ -31,12 +32,13 @@
   justify-content: space-around;
   padding: 10px;
   position: sticky;
-  margin-bottom: 50px;
+  margin: 5px 5px 50px 5px;
   z-index: 2;
   top: 110px;
   background-color: #e64d45;
   border-radius: 30px;
   transition: transform 0.3s ease-in;
+  transition: transform 0.5s ease-in 0.2s, translateY 0.5s linear;
   &_down {
     transform: translateY(-80px);
   }
@@ -44,4 +46,9 @@
     flex-direction: column;
     gap: 10px;
   }
+  @media (max-width: 890px) {
+   flex-direction: column;
+   padding: 5px;
+   
+ }
 }
