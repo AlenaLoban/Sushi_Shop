@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import style from "../../../../core/css/index.module.scss";
+import emptyCart from "/1.webp"
 
 const CartEmpty = () => {
   return (
@@ -9,7 +10,7 @@ const CartEmpty = () => {
         Перейдите в <Link to="/catalog">каталог</Link>, чтобы добавить товары в
         корзину.
       </p>
-      <img src="1.webp" alt="пустая корзина" />
+      <img src={emptyCart} alt="пустая корзина" />
     </div>
   );
 };
