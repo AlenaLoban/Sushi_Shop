@@ -8,4 +8,5 @@ export interface IItem {
   category: number;
   rating: number;
   count: number;
+  spicy: boolean;
 }

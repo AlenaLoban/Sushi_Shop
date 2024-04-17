@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
-import style from "../../../../core/css/index.module.scss";
-import emptyCart from "/1.webp"
+import React from 'react';
+import { Link } from 'react-router-dom';
+import style from '../../../../core/scss/index.module.scss';
+import emptyCart from '/1.webp';
 
-const CartEmpty = () => {
+const CartEmpty: React.FC = () => {
+   
   return (
     <div className={style.emptyCart}>
       <h2>В корзине пока ничего нет. </h2>

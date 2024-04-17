@@ -1,28 +1,30 @@
-import style from "./css/catalog.module.scss";
-import ProductCategory from "../../features/category/ProductCategory";
-import ProductFilter from "../../features/product/list/components/ProductFilter";
-import AllProducts from "../../features/product/list/components/AllProducts";
-import ButtonUp from "./ButtonUp";
-import cn from "classnames";
-import React from "react";
-import { useScrollDirection } from "../../hooks/useScrollDirection";
+import style from './scss/catalog.module.scss';
+import ProductCategory from '../../features/category/ProductCategory';
+import ProductFilter from '../../features/product/list/components/ProductFilter';
+import AllProducts from '../../features/product/list/components/AllProducts';
+import cn from 'classnames';
+import React from 'react';
+import { useScrollDirection } from '../../hooks/useScrollDirection';
+import { useLocation } from 'react-router-dom';
 
 const Catalog: React.FC = () => {
-  const isScrollingDown = useScrollDirection();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isScrollingDown = useScrollDirection(currentPath);
 
   return (
     <div className={cn(style.container, style.catalog)}>
       <div
         className={cn(
           style.page__filter,
-          isScrollingDown ? style.page__filter_down : ""
+          isScrollingDown ? style.page__filter_down : '',
         )}
       >
         <ProductCategory />
         <ProductFilter />
       </div>
       <AllProducts />
-      <ButtonUp />
     </div>
   );
 };

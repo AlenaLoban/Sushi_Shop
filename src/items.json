@@ -8,7 +8,8 @@
     "price": 8.5,
     "category": 1,
     "rating": 8,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "1",
@@ -19,7 +20,8 @@
     "price": 7.9,
     "category": 1,
     "rating": 5,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "2",
@@ -30,7 +32,8 @@
     "price": 8.1,
     "category": 1,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "3",
@@ -41,7 +44,8 @@
     "price": 7.9,
     "category": 1,
     "rating": 5,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "4",
@@ -52,7 +56,8 @@
     "price": 8.7,
     "category": 1,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "5",
@@ -63,7 +68,8 @@
     "price": 8.7,
     "category": 1,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": true
   },
   {
     "id": "6",
@@ -74,7 +80,8 @@
     "price": 8.4,
     "category": 1,
     "rating": 7,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "7",
@@ -85,7 +92,8 @@
     "price": 8.4,
     "category": 1,
     "rating": 7,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "8",
@@ -96,7 +104,8 @@
     "price": 8.2,
     "category": 1,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "9",
@@ -107,7 +116,8 @@
     "price": 8.2,
     "category": 1,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "10",
@@ -118,7 +128,8 @@
     "price": 7.5,
     "category": 1,
     "rating": 6,
-    "count": 0
+    "count": 0,
+    "spicy": true
   },
   {
     "id": "11",
@@ -129,7 +140,8 @@
     "price": 8.5,
     "category": 1,
     "rating": 8,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "12",
@@ -140,7 +152,8 @@
     "price": 8.4,
     "category": 1,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "13",
@@ -151,7 +164,8 @@
     "price": 9.7,
     "category": 2,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": true
   },
   {
     "id": "14",
@@ -162,7 +176,8 @@
     "price": 5.0,
     "category": 2,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "15",
@@ -173,7 +188,8 @@
     "price": 5.0,
     "category": 2,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "16",
@@ -184,7 +200,8 @@
     "price": 5.0,
     "category": 2,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": true
   },
   {
     "id": "17",
@@ -195,7 +212,8 @@
     "price": 5.0,
     "category": 2,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "18",
@@ -206,7 +224,8 @@
     "price": 5.0,
     "category": 2,
     "rating": 7,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "19",
@@ -217,7 +236,8 @@
     "price": 55,
     "category": 3,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": true
   },
   {
     "id": "20",
@@ -228,7 +248,8 @@
     "price": 58,
     "category": 3,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": true
   },
   {
     "id": "21",
@@ -239,7 +260,8 @@
     "price": 52,
     "category": 3,
     "rating": 8,
-    "count": 0
+    "count": 0,
+    "spicy": true
   },
   {
     "id": "22",
@@ -261,7 +283,8 @@
     "price": 52,
     "category": 3,
     "rating": 8,
-    "count": 0
+    "count": 0,
+    "spicy": true
   },
   {
     "id": "24",
@@ -272,7 +295,8 @@
     "price": 3.0,
     "category": 4,
     "rating": 8,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "25",
@@ -283,7 +307,8 @@
     "price": 3.0,
     "category": 4,
     "rating": 7,
-    "count": 0
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "26",
@@ -293,8 +318,9 @@
     "weight": 30,
     "price": 3.0,
     "category": 4,
-    "rating": 10,
-    "count": 0
+    "rating": 8,
+    "count": 0,
+    "spicy": false
   },
   {
     "id": "27",
@@ -305,6 +331,7 @@
     "price": 3.0,
     "category": 4,
     "rating": 9,
-    "count": 0
+    "count": 0,
+    "spicy": true
   }
 ]

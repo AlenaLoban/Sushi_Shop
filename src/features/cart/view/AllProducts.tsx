@@ -1,10 +1,10 @@
-import style from "./css/index.module.scss";
-import { SlBasket } from "react-icons/sl";
-import { clearCartItems } from "../list/cartSlice";
-import { useAppDispatch } from "../../../core/store/hooks";
-import React from "react";
-import CartTotal from "../list/components/CartTotal";
-import CartItems from "../list/components/CartItems";
+import style from './scss/index.module.scss';
+import { SlBasket } from 'react-icons/sl';
+import { clearCartItems } from '../list/cartSlice';
+import { useAppDispatch } from '../../../core/store/hooks';
+import React from 'react';
+import CartTotal from '../list/components/CartTotal';
+import CartItems from '../list/components/CartItems';
 
 const FullCart: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -14,11 +14,11 @@ const FullCart: React.FC = () => {
       <div className={style.wrapper__box}>
         <div className={style.top}>
           <h2>
-            <SlBasket /> Корзина{" "}
+            <SlBasket /> Корзина{' '}
           </h2>
           <p onClick={() => dispatch(clearCartItems())}>Очистить</p>
         </div>
-        <CartItems/>
+        <CartItems />
         <CartTotal />
       </div>
     </div>

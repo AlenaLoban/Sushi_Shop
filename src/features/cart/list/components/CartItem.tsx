@@ -1,15 +1,16 @@
-import style from "../css/cart.module.scss";
-import cn from "classnames";
-import { LuMinus, LuPlus } from "react-icons/lu";
-import { MdDeleteForever } from "react-icons/md";
-import { addItem, minusCount, removeItem } from "../cartSlice";
-import { useAppDispatch } from "../../../../core/store/hooks";
-import { IItem } from "../../../../hooks/types/data";
-import React from "react";
+import style from '../scss/cart.module.scss';
+import cn from 'classnames';
+import { LuMinus, LuPlus } from 'react-icons/lu';
+import { MdDeleteForever } from 'react-icons/md';
+import { addItem, minusCount, removeItem } from '../cartSlice';
+import { useAppDispatch } from '../../../../core/store/hooks';
+import { IItem } from '../../../../hooks/types/data';
+import React from 'react';
 
-const CartProduct: React.FC<IItem> = (props) => {
+const CartProduct: React.FC<IItem> = props => {
   const dispatch = useAppDispatch();
   const { id, title, price, imageUrl, count } = props;
+
   return (
     <div className={style.card}>
       <div
@@ -23,31 +24,31 @@ const CartProduct: React.FC<IItem> = (props) => {
             <button
               className={style.box__button}
               type="button"
-              onClick={() => dispatch(addItem(props))}
-            >
-              <LuPlus />
-            </button>
-            <p>{count}</p>
-            <button
-              className={style.box__button}
-              type="button"
               disabled={count === 1}
               onClick={() => dispatch(minusCount(id))}
             >
               <LuMinus />
             </button>
+            <p>{count}</p>
+            <button
+              className={style.box__button}
+              type="button"
+              onClick={() => dispatch(addItem(props))}
+            >
+              <LuPlus />
+            </button>
           </div>
           <p>
-            {new Intl.NumberFormat("be-BY", {
-              style: "currency",
-              currency: "BYN",
+            {new Intl.NumberFormat('be-BY', {
+              style: 'currency',
+              currency: 'BYN',
             }).format(price * count)}
           </p>
         </div>
       </div>
       <div onClick={() => dispatch(removeItem(id))}>
         <MdDeleteForever
-          style={{ width: "1.2em", height: "1.2em", cursor: "pointer" }}
+          style={{ width: '1.2em', height: '1.2em', cursor: 'pointer' }}
         />
       </div>
     </div>

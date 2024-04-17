@@ -1,25 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 let isScrollDown = false;
 
-export const useScrollDirection = () => {
+export const useScrollDirection = (currentPath: string) => {
   const [prevOffset, setPrevOffset] = useState(0);
 
   const toggleScrollDirection = () => {
     const scrollY = window.scrollY;
-    //  const scrollY = event.currentTarget?.scrollY;
-    if (scrollY > prevOffset && scrollY > 50) isScrollDown = true;
-    if (scrollY < prevOffset && scrollY > 50) isScrollDown = false;
+    if (currentPath === '/catalog') {
+      if (scrollY > prevOffset && scrollY > 50) isScrollDown = true;
+      if (scrollY < prevOffset && scrollY > 50) isScrollDown = false;
+    }
+
     setPrevOffset(scrollY);
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", toggleScrollDirection);
+    window.addEventListener('scroll', toggleScrollDirection);
 
     return () => {
-      window.removeEventListener("scroll", toggleScrollDirection);
+      window.removeEventListener('scroll', toggleScrollDirection);
     };
   });
-  
+
   return isScrollDown;
 };

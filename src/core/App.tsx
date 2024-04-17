@@ -1,4 +1,4 @@
-import Routing from "./Routing";
+import Routing from './routing/Routing';
 
 function App() {
   return (

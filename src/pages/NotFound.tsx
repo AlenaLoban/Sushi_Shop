@@ -1,6 +1,7 @@
-import style from "../core/css/index.module.scss";
-import image from "/404.png?url";
-import React from "react";
+import style from '../core/scss/index.module.scss';
+import image from '/404.png?url';
+import React from 'react';
+
 const NotFound: React.FC = () => {
   return (
     <div className={style.notFound}>

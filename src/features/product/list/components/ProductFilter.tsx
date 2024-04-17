@@ -1,18 +1,27 @@
-import React, { useState, useRef } from "react";
-import { useOnClickOutside } from "usehooks-ts";
-import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
-import { useAppDispatch, useAppSelector } from "../../../../core/store/hooks";
-import { setSort, SortType, selectSort } from "../../../filterSlice";
-import style from "../css/products.module.scss";
+import React, { useState, useRef } from 'react';
+import { useOnClickOutside } from 'usehooks-ts';
+import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
+import { useAppDispatch, useAppSelector } from '../../../../core/store/hooks';
+import {
+  setSort,
+  SortType,
+  setOnlySpicy,
+  selectFilter,
+} from '../../../filterSlice';
+import style from '../scss/products.module.scss';
+import {
+  MdOutlineCheckBoxOutlineBlank,
+  MdOutlineCheckBox,
+} from 'react-icons/md';
 
 const ProductFilter: React.FC = () => {
   const sortList = [
-    { name: "цене", sort: "price", order: "esc" },
-    { name: "рейтингу", sort: "rating", order: "desc" },
+    { name: 'рейтингу', sort: 'rating', order: 'desc' },
+    { name: 'цене', sort: 'price', order: 'esc' },
   ];
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const sort = useAppSelector(selectSort);
+  const { sort, spicy } = useAppSelector(selectFilter);
   const ref = useRef<HTMLDivElement>(null);
   const handleClickOutside = (): void => {
     setOpen(false);
@@ -29,7 +38,7 @@ const ProductFilter: React.FC = () => {
       <div className={style.sort__placeholder}>
         {open ? <TiArrowSortedDown /> : <TiArrowSortedUp />}
         <p>
-          Сортировка по: <span onClick={() => setOpen(!open)}>{sort.name}</span>
+          сортировка по: <span onClick={() => setOpen(!open)}>{sort.name}</span>
         </p>
       </div>
       {open && (
@@ -43,6 +52,12 @@ const ProductFilter: React.FC = () => {
           </ul>
         </div>
       )}
+      <div className={style.sort__checkBox}>
+        <div onClick={() => dispatch(setOnlySpicy(!spicy))}>
+          {spicy ? <MdOutlineCheckBox /> : <MdOutlineCheckBoxOutlineBlank />}
+        </div>
+        <p>острые</p>
+      </div>
     </div>
   );
 };

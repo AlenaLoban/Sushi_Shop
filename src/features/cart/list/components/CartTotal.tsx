@@ -1,18 +1,19 @@
-import style from "../css/cart.module.scss";
-import { useAppSelector } from "../../../../core/store/hooks";
-import { selectCart } from "../cartSlice";
-import Button from "../../../../core/ui/Button";
+import React from 'react';
+import style from '../scss/cart.module.scss';
+import { useAppSelector } from '../../../../core/store/hooks';
+import { selectCart } from '../cartSlice';
+import Button from '../../../../core/ui/Button';
 
-const CartTotal = () => {
+const CartTotal: React.FC = () => {
   const { total } = useAppSelector(selectCart);
   return (
     <div className={style.total}>
       <div className={style.total__text}>
-       <p>Сумма заказа{" "}: </p> 
+        <p>Сумма заказа : </p>
         <span>
-          {new Intl.NumberFormat("be-BY", {
-            style: "currency",
-            currency: "BYN",
+          {new Intl.NumberFormat('be-BY', {
+            style: 'currency',
+            currency: 'BYN',
           }).format(total)}
         </span>
       </div>

@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
+import { configureStore } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
 import {
   persistReducer,
   persistStore,
@@ -9,28 +9,30 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import { combineReducers } from "redux";
-import filterReducer from "../../features/filterSlice";
-import cartReducer from "../../features/cart/list/cartSlice";
-import { baseApi } from "./api";
+} from 'redux-persist';
+import { combineReducers } from 'redux';
+import filterReducer from '../../features/filterSlice';
+import userReducer from '../../features/user/userSlice';
+import cartReducer from '../../features/cart/list/cartSlice';
+import { baseApi } from './api';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
-  whitelist: ["cart"],
+  whitelist: ['cart'],
 };
 
 const rootReducer = combineReducers({
   filter: filterReducer,
   cart: cartReducer,
+  user: userReducer,
   [baseApi.reducerPath]: baseApi.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
