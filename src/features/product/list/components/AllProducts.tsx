@@ -41,28 +41,19 @@ const AllProducts: React.FC = () => {
     const pageParams = searchParams.get('page');
     const categoryParams = searchParams.get('category');
     const sortByParams = searchParams.get('sortBy');
-    const orderParams = searchParams.get('order');
     const spicyParams = searchParams.get('spicy');
 
-    if (
-      !pageParams ||
-      !categoryParams ||
-      spicyParams === 'false' ||
-      !sortByParams ||
-      !orderParams
-    ) {
-      return;
-    }
-    setPage(parseInt(pageParams));
-    dispatch(setCategory(parseInt(categoryParams)));
-    dispatch(setOnlySpicy(!!spicyParams));
-    dispatch(
-      setSort({
-        name: sortByParams === 'price' ? 'цене' : 'рейтингу',
-        sort: sortByParams,
-        order: orderParams,
-      }),
-    );
+    if (pageParams) setPage(parseInt(pageParams));
+    if (categoryParams) dispatch(setCategory(parseInt(categoryParams)));
+    if (sortByParams)
+      dispatch(
+        setSort(
+          sortByParams === 'price'
+            ? { name: 'цене', sort: sortByParams, order: 'esc' }
+            : { name: 'рейтингу', sort: sortByParams, order: 'desk' },
+        ),
+      );
+    if (spicyParams === 'true') dispatch(setOnlySpicy(!!spicyParams));
   }, []);
 
   return (

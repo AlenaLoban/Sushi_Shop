@@ -1,19 +1,19 @@
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: #e64d45 !important;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
-
-  .pagination {
-    align-self: center;
-    margin-bottom: 30px;
-    button:hover,
-    button:active {
-      background-color: #e64d45;
-    }
-    :global {
-      .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-        background-color: #e64d45;
-      }
-    }
+}
+.pagination {
+  align-self: center;
+  margin-bottom: 30px;
+  button:hover {
+    background-color: #e64d45 !important;
+  }
+  :global(.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected) {
+    background-color: #e64d45 !important;
   }
 }
 .allproducts {
