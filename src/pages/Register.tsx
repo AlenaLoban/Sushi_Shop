@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterForm from '../features/auth/components/RegisterForm';
+import RegisterForm from '../features/auth/components/Registration/RegisterForm';
 import style from '../core/scss/index.module.scss';
 import cn from 'classnames';
 

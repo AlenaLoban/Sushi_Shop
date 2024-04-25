@@ -4,13 +4,16 @@ import style from './scss/profile.module.scss';
 import Button from '../../core/ui/Button';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../core/store/hooks';
-import { selectCurrentUser } from '../../features/user/userSlice';
 import { FiMail } from 'react-icons/fi';
 import { LuPhone } from 'react-icons/lu';
+// import { useGetCurrentUser } from '../../features/user/hooks/useCurrentUser';
+import {useLocation} from 'react-router-dom';
 
 const UserProfile: React.FC = () => {
-  const user = useAppSelector(selectCurrentUser);
+//   const { user } = useGetCurrentUser();
+  const location = useLocation();
+  const user = location.state.user
+  
 
   return (
     <div className={cn(style.userProfile, style.container)}>

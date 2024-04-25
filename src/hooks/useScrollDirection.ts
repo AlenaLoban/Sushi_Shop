@@ -11,7 +11,6 @@ export const useScrollDirection = (currentPath: string) => {
       if (scrollY > prevOffset && scrollY > 50) isScrollDown = true;
       if (scrollY < prevOffset && scrollY > 50) isScrollDown = false;
     }
-
     setPrevOffset(scrollY);
   };
 
