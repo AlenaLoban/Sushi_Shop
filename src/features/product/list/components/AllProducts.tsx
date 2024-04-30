@@ -6,8 +6,7 @@ import { Pagination } from '@mui/material';
 import { useGetProducts } from '../hooks/useGetProducts';
 
 const AllProducts: React.FC = () => {
-  const { data, isError, isLoading, page, pageCount, setPage } =
-    useGetProducts();
+  const { data, isError, isLoading, page, setPage, pageQnt } = useGetProducts();
 
   return (
     <div className={style.wrapper}>
@@ -22,7 +21,7 @@ const AllProducts: React.FC = () => {
       {!isLoading && (
         <div className={style.pagination}>
           <Pagination
-            count={pageCount}
+            count={pageQnt}
             page={page}
             shape="rounded"
             variant="outlined"

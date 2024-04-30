@@ -8,8 +8,8 @@ export const useScrollDirection = (currentPath: string) => {
   const toggleScrollDirection = () => {
     const scrollY = window.scrollY;
     if (currentPath === '/catalog') {
-      if (scrollY > prevOffset && scrollY > 50) isScrollDown = true;
-      if (scrollY < prevOffset && scrollY > 50) isScrollDown = false;
+      if (scrollY > prevOffset && scrollY > 30) isScrollDown = true;
+      if (scrollY < prevOffset && scrollY > 30) isScrollDown = false;
     }
     setPrevOffset(scrollY);
   };

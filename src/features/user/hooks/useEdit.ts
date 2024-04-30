@@ -16,10 +16,11 @@ const setAvatar = (userFile: File, userEmail: string) => {
       if (!avatars) {
         const userAvatars = { [userEmail]: fileReader.result };
         localStorage.setItem('userAvatars', JSON.stringify(userAvatars));
+      } else {
+        const userAvatars = { ...JSON.parse(avatars) };
+        userAvatars[userEmail] = fileReader.result;
+        localStorage.setItem('userAvatars', JSON.stringify(userAvatars));
       }
-      const userAvatars = { ...JSON.parse(avatars) };
-      userAvatars[userEmail] = fileReader.result;
-      localStorage.setItem('userAvatars', JSON.stringify(userAvatars));
     }
   };
   fileReader.readAsDataURL(userFile);
@@ -50,7 +51,7 @@ export function useEdit(user: IUser) {
     await updateUser({
       ...data,
       id: user.id,
-      tel: data.tel.replace(/\s+/g, '').toString()
+      tel: data.tel.replace(/\s+/g, '').toString(),
     }).unwrap();
 
     isError && setError('Ошибка на сервере. Повторите попытку еще раз');
@@ -60,4 +61,3 @@ export function useEdit(user: IUser) {
 
   return { onSubmit: handleSubmit(onSubmit), error };
 }
-

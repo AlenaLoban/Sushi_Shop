@@ -75,7 +75,14 @@ import {
 import { useGetProductsQuery } from '../productApi';
 
 const limit = 12;
-const pageCount = 3;
+
+const countProductsByQuery = [
+  { notspicy: 28, spicy: 9 },
+  { notspicy: 13, spicy: 2 },
+  { notspicy: 6, spicy: 2 },
+  { notspicy: 5, spicy: 4 },
+  { notspicy: 4, spicy: 1 },
+];
 
 export function useGetProducts() {
   const [page, setPage] = useState(1);
@@ -88,6 +95,10 @@ export function useGetProducts() {
   } = useGetProductsQuery({ category, sort, spicy, page, limit });
 
   const dispatch = useAppDispatch();
+
+  const pageQnt = Math.ceil(
+    countProductsByQuery[category][spicy ? 'spicy' : 'notspicy'] / limit,
+  );
 
   const setPageQuery = (pageParams: string) => {
     if (!pageParams) {
@@ -120,7 +131,7 @@ export function useGetProducts() {
   };
 
   useEffect(() => {
-    if (page > pageCount) setPage(1);
+    if (page > pageQnt) setPage(1);
     setSearchParams({
       page: page.toString(),
       category: category.toString(),
@@ -148,6 +159,6 @@ export function useGetProducts() {
     isLoading,
     page,
     setPage,
-    pageCount,
+    pageQnt,
   };
 }
