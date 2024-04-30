@@ -6,20 +6,18 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { FiMail } from 'react-icons/fi';
 import { LuPhone } from 'react-icons/lu';
-// import { useGetCurrentUser } from '../../features/user/hooks/useCurrentUser';
-import {useLocation} from 'react-router-dom';
+import { useGetCurrentUser } from '../../features/user/hooks/useCurrentUser';
 
 const UserProfile: React.FC = () => {
-//   const { user } = useGetCurrentUser();
-  const location = useLocation();
-  const user = location.state.user
-  
+  const { user, isError } = useGetCurrentUser();
+
 
   return (
     <div className={cn(style.userProfile, style.container)}>
       <Link to={'/profile'} className={style.button}>
         <Button>Назад</Button>
       </Link>
+      {isError && <h3>Server Error</h3>}
 
       {user && (
         <div className={style.userProfile__user}>

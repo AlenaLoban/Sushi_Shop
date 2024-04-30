@@ -3,9 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { useUpdateUserMutation } from '../userApi';
-import { Inputs } from '../../auth/components/types';
+import { Inputs } from '../../auth/types';
 import { useGetUsers } from '../../auth/hooks/useGetUsers';
 import { IUser } from '../../../hooks/types/IUsersType';
+
+const setAvatar = (userFile: File, userEmail: string) => {
+  const fileReader = new FileReader();
+  const avatars = localStorage.getItem('userAvatars') || '';
+
+  fileReader.onload = () => {
+    if (fileReader.result) {
+      if (!avatars) {
+        const userAvatars = { [userEmail]: fileReader.result };
+        localStorage.setItem('userAvatars', JSON.stringify(userAvatars));
+      }
+      const userAvatars = { ...JSON.parse(avatars) };
+      userAvatars[userEmail] = fileReader.result;
+      localStorage.setItem('userAvatars', JSON.stringify(userAvatars));
+    }
+  };
+  fileReader.readAsDataURL(userFile);
+};
 
 export function useEdit(user: IUser) {
   const [error, setError] = useState<string>();
@@ -18,20 +36,21 @@ export function useEdit(user: IUser) {
     conf_password,
     ...data
   }) => {
-    const findUser = !!users && users.find(user => user.email === data.email);
+    const userEmail = data.email;
+    const userFile = data.avatar[0];
+    const findUser = users && users.find(user => user.email === userEmail);
     if (findUser && findUser.id !== user.id) {
-      setError(`Пользователь с почтой ${data.email} уже сущестует.`);
+      setError(`Пользователь с почтой ${userEmail} уже сущестует.`);
       return;
     }
-    localStorage.setItem('token', btoa(`${data.email}:${data.password}`));
+    localStorage.setItem('token', btoa(`${userEmail}:${data.password}`));
+
+    userFile && setAvatar(userFile, userEmail);
 
     await updateUser({
       ...data,
       id: user.id,
-      tel: data.tel.replace(/\s+/g, '').toString(),
-      avatar: data?.avatar[0]
-        ? URL.createObjectURL(data.avatar[0])
-        : user.avatar,
+      tel: data.tel.replace(/\s+/g, '').toString()
     }).unwrap();
 
     isError && setError('Ошибка на сервере. Повторите попытку еще раз');
@@ -41,3 +60,4 @@ export function useEdit(user: IUser) {
 
   return { onSubmit: handleSubmit(onSubmit), error };
 }
+

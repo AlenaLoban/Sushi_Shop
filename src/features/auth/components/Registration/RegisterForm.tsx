@@ -2,12 +2,12 @@ import React from 'react';
 import style from '../scss/auth.module.scss';
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import Button from '../../../../core/ui/Button';
-import { Inputs } from '../types';
+import { Inputs } from '../../types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import 'yup-phone-lite';
 import FormError from '../FormError';
 import { schema } from './schema';
-import BaseForm from './BaseForm';
+import BaseFields from '../../../../core/ui/BaseFields';
 import { useRegistration } from '../../hooks/useRegistration';
 
 const RegisterForm: React.FC = () => {
@@ -16,7 +16,7 @@ const RegisterForm: React.FC = () => {
 
   return (
     <form className={style.registerForm} onSubmit={onSubmit}>
-      <BaseForm />
+      <BaseFields />
       {error && <FormError errorMessage={error} />}
       <Button
         className={style.submit}

@@ -12,7 +12,6 @@ import {
 } from 'redux-persist';
 import { combineReducers } from 'redux';
 import filterReducer from '../../features/filterSlice';
-import userReducer from '../../features/user/userSlice';
 import cartReducer from '../../features/cart/list/cartSlice';
 import { baseApi } from './api';
 
@@ -25,7 +24,6 @@ const persistConfig = {
 const rootReducer = combineReducers({
   filter: filterReducer,
   cart: cartReducer,
-  user: userReducer,
   [baseApi.reducerPath]: baseApi.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);

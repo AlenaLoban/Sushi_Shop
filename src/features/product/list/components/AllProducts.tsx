@@ -1,32 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Product from '../../view/Index';
 import style from '../scss/products.module.scss';
 import Skeleton from './Skeleton';
 import { Pagination } from '@mui/material';
-import { useGetProducts } from './hooks/useGetProducts';
+import { useGetProducts } from '../hooks/useGetProducts';
 
 const AllProducts: React.FC = () => {
-  const {
-    data,
-    getSearchQuery,
-    isError,
-    isLoading,
-    page,
-    pageCount,
-    setPage,
-    setSearchQuery,
-    category,
-    sort,
-    spicy,
-  } = useGetProducts();
-
-  useEffect(() => {
-    setSearchQuery();
-  }, [page, category, sort, spicy]);
-
-  useEffect(() => {
-    getSearchQuery();
-  }, []);
+  const { data, isError, isLoading, page, pageCount, setPage } =
+    useGetProducts();
 
   return (
     <div className={style.wrapper}>
@@ -46,7 +27,12 @@ const AllProducts: React.FC = () => {
             shape="rounded"
             variant="outlined"
             onChange={(_, num) => setPage(num)}
-            sx={{ button: { color: '#ffffff' } }}
+            sx={{
+              '.MuiPaginationItem-root': { color: 'white' },
+              '.MuiPaginationItem-root.Mui-selected': {
+                backgroundColor: '#e64d45',
+              },
+            }}
           />
         </div>
       )}

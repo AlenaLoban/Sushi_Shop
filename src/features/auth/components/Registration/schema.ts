@@ -40,5 +40,17 @@ export const schema = yup
       .string()
       .required('Поле обязательно для заполнения')
       .oneOf([yup.ref('password')], 'Пароль должен совпадать'),
+    avatar: yup
+      
+      .mixed<FileList>()
+      .test(
+        'fileSize',
+        'Невозможно загрузить фото. Превышен размер 5 MB',
+        
+        (value) => {
+         if (!value) return true
+          return  value && value[0]?.size < 5000000;
+        },
+      ),
   })
   .required();

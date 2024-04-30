@@ -1,12 +1,11 @@
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import Button from '../../../../core/ui/Button';
 import style from '../scss/auth.module.scss';
-import InputBox from '../InputBox';
-import InputPassword from '../InputPassword';
 import FormError from '../FormError';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLogin } from '../../hooks/useLogin';
+import LoginFields from './LoginFields';
 
 export type InputsLog = {
   email: string;
@@ -21,13 +20,12 @@ const schema = yup
   .required();
 
 const LoginForm = () => {
-  const { register, formState } = useFormContext();
+  const { formState } = useFormContext();
   const { onSubmit, error } = useLogin();
 
   return (
     <form className={style.loginForm} onSubmit={onSubmit}>
-      <InputBox label="Почта" {...register('email')} />
-      <InputPassword label="Пароль" {...register('password')} />
+      <LoginFields />
       {error && <FormError errorMessage={error} />}
 
       <Button
