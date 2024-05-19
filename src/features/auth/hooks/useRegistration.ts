@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { useAddUserMutation } from '../../user/userApi';
-import { Inputs } from '../components/types';
+import { Inputs } from '../types';
 import { useGetUsers } from './useGetUsers';
 
 export function useRegistration() {
@@ -17,6 +17,7 @@ export function useRegistration() {
     conf_password,
     ...data
   }) => {
+   
     const findUser = !!users && users.find(user => user.email === data.email);
     if (findUser) {
       setError(`Пользователь с почтой ${data.email} уже сущестует.`);

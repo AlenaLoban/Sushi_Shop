@@ -27,11 +27,30 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 
   @media (max-width: 590px) {
     width: 365px;
-    gap: 18px;
+  }
+}
+.loginFields,
+.baseFields,
+.editFields {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.editFields {
+  p {
+    align-self: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: all 1s ease 0.3s;
+    &:hover {
+      background-color: #e64d45;
+    }
   }
 }
 .formError {
@@ -44,41 +63,6 @@
   padding: 12px;
   p {
     text-align: center;
-  }
-}
-.boxInput {
-  position: relative;
-
-  label {
-    background-color: #131313;
-    position: absolute;
-    padding: 0 10px;
-    z-index: 5;
-    top: -13px;
-    left: 15px;
-  }
-  &__input {
-    color: white;
-    position: relative;
-    width: 100%;
-    background-color: transparent !important;
-    border: 1px solid white;
-    &:focus {
-      outline: 0;
-      outline-offset: 0;
-    }
-  }
-  &__error {
-    border: 3px solid #e64d45;
-  }
-  &__eye {
-    position: absolute;
-    top: 17px;
-    right: 15px;
-  }
-  .error {
-    color: #e64d45;
-    font-size: 13px;
   }
 }
 .submit {

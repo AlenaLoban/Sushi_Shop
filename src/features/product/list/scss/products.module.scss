@@ -1,6 +1,3 @@
-.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-  background-color: #e64d45 !important;
-}
 
 .wrapper {
   display: flex;
@@ -12,9 +9,7 @@
   button:hover {
     background-color: #e64d45 !important;
   }
-  :global(.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected) {
-    background-color: #e64d45 !important;
-  }
+
 }
 .allproducts {
   display: grid;

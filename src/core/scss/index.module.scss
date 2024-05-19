@@ -185,3 +185,50 @@ select:-webkit-autofill:focus {
     padding-bottom: 15px;
   }
 }
+
+.inputWrapper{
+   position: relative;
+   label {
+      background-color: #131313;
+      position: absolute;
+      padding: 0 10px;
+      z-index: 5;
+      top: -13px;
+      left: 15px;
+    }
+}
+.inputElem{
+   color: white;
+   position: relative;
+   width: 100%;
+   background-color: transparent !important;
+   border: 1px solid white;
+   &:focus {
+     outline: 0;
+     outline-offset: 0;
+   }
+   &__error{
+      border: 3px solid #e64d45;
+   }
+   &__eye {
+      position: absolute;
+      top: 17px;
+      right: 15px;
+    }
+
+}
+.inputError{
+   color: #e64d45;
+   font-size: 13px;
+
+}
+.hidden {
+   visibility: hidden;
+   opacity: 0;
+   width: 0;
+   height: 0;
+   line-height: 0;
+   padding: 0;
+   margin: 0;
+   display: none;
+ }
