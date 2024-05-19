@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import RegisterForm from '../../features/auth/components/RegisterForm';
 import style from './scss/profile.module.scss';
 import Button from '../../core/ui/Button';
 import { Link } from 'react-router-dom';
 import UserAvatar from '../../features/user/components/UserAvatar';
-import { useAppSelector } from '../../core/store/hooks';
-import { selectCurrentUser } from '../../features/user/userSlice';
+import EditForm from '../../features/user/components/EditForm';
+import { useLocation } from 'react-router-dom';
 
 const EditProfile: React.FC = () => {
   const [preAvatar, setPreAvatar] = useState('');
-  const user = useAppSelector(selectCurrentUser);
+  const location = useLocation();
+  const user = location.state.user;
 
   return (
     <div className={style.editProfile}>
@@ -17,7 +17,7 @@ const EditProfile: React.FC = () => {
         <Button>Назад</Button>
       </Link>
       <UserAvatar preAvatar={preAvatar} />
-      {user && <RegisterForm user={user} setPreAvatar={setPreAvatar} />}
+      {user && <EditForm user={user} setPreAvatar={setPreAvatar} />}
     </div>
   );
 };

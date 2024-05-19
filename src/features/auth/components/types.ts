@@ -1,4 +1,4 @@
-import { UseFormRegister } from 'react-hook-form';
+import { UseFormRegister} from 'react-hook-form';
 
 export type Inputs = {
   name: string;
@@ -21,6 +21,6 @@ export type IPropsForInput = {
   ref?: HTMLInputElement;
   placeholder?: string;
   label?: string;
-  errorMessage?: string | undefined;
+  errorMessage?: any;
   register?: UseFormRegister<Inputs>;
 };
