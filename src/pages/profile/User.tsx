@@ -2,7 +2,6 @@ import React from 'react';
 import UserAvatar from '../../features/user/components/UserAvatar';
 import style from './scss/profile.module.scss';
 import Button from '../../core/ui/Button';
-import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { FiMail } from 'react-icons/fi';
 import { LuPhone } from 'react-icons/lu';
@@ -11,9 +10,8 @@ import { useGetCurrentUser } from '../../features/user/hooks/useCurrentUser';
 const UserProfile: React.FC = () => {
   const { user, isError } = useGetCurrentUser();
 
-
   return (
-    <div className={cn(style.userProfile, style.container)}>
+    <div className={style.userProfile}>
       <Link to={'/profile'} className={style.button}>
         <Button>Назад</Button>
       </Link>

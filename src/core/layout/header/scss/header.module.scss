@@ -58,6 +58,10 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    @media (max-width: 490px) {
+      width: 55px;
+      height: 55px;
+    }
   }
 
   &__top {
@@ -92,6 +96,10 @@ header {
             width: 25px;
             height: 25px;
             border: none;
+            @media (max-width: 690px) {
+              position: relative;
+              top: 3px;
+            }
           }
         }
       }

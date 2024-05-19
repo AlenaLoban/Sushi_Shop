@@ -27,7 +27,7 @@ const CartProduct: React.FC<IItem> = props => {
               disabled={count === 1}
               onClick={() => dispatch(minusCount(id))}
             >
-              <LuMinus />
+              <LuMinus className={style.box__button__icon} />
             </button>
             <p>{count}</p>
             <button
@@ -35,7 +35,7 @@ const CartProduct: React.FC<IItem> = props => {
               type="button"
               onClick={() => dispatch(addItem(props))}
             >
-              <LuPlus />
+              <LuPlus className={style.box__button__icon} />
             </button>
           </div>
           <p>
