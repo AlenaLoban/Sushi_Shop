@@ -1,4 +1,3 @@
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -9,7 +8,6 @@
   button:hover {
     background-color: #e64d45 !important;
   }
-
 }
 .allproducts {
   display: grid;
@@ -22,21 +20,23 @@
 .sort {
   position: relative;
   &__checkBox {
-    div {
-      display: flex;
-      justify-content: center;
+    &__icon {
+      position: relative;
+      top: 3px;
+      cursor: pointer;
     }
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 3px;
   }
   &__placeholder {
-    display: flex;
-    align-items: center;
-  }
-
-  span {
     cursor: pointer;
+    display: flex;
+
+    &__icon {
+      position: relative;
+      top: 3px;
+    }
   }
 
   .popup {

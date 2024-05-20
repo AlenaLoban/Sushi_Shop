@@ -5,7 +5,7 @@ const userApi = baseApi
   .enhanceEndpoints({ addTagTypes: ['users'] })
   .injectEndpoints({
     endpoints: build => ({
-      getUsers: build.query<IUser[], string>({
+      getUsers: build.query<IUser[], void>({
         query: () => `/users`,
         providesTags: result =>
           result

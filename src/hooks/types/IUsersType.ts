@@ -1,6 +1,6 @@
 export interface IUser {
   name: string;
-  avatar?: any;
+  avatar?: FileList | undefined;
   email: string;
   tel: string;
   password: string;
