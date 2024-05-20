@@ -1,8 +1,9 @@
-import { useFormContext } from 'react-hook-form';
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
 import style from '../../scss/index.module.scss';
 import cn from 'classnames';
 import { useState } from 'react';
 import { LuEye, LuEyeOff } from 'react-icons/lu';
+import { Inputs } from '../../../features/auth/types';
 
 type IProps = {
   type: 'password' | 'tel' | 'text' | 'radio' | 'email' | 'file';
@@ -11,16 +12,18 @@ type IProps = {
   accept?: string;
   placeholder?: string;
   hiddenInputRef?: React.MutableRefObject<HTMLElement | null>;
+  register: UseFormRegister<FieldValues>;
+  error: FieldErrors<Inputs> | undefined;
 };
 
 const InputElement: React.FC<IProps> = ({
+  error,
+  register,
   name,
   type,
   hiddenInputRef,
   ...props
 }) => {
-  const { register, formState } = useFormContext();
-  const error = formState.errors?.[name]?.message;
   const { ref: registerRef, ...rest } = register(name);
   const [showPass, setShowPass] = useState(false);
   return (

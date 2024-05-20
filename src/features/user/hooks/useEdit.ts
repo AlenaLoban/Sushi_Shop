@@ -12,16 +12,17 @@ const setAvatar = (userFile: File, userEmail: string) => {
   const avatars = localStorage.getItem('userAvatars') || '';
 
   fileReader.onload = () => {
-    if (fileReader.result) {
-      if (!avatars) {
-        const userAvatars = { [userEmail]: fileReader.result };
-        localStorage.setItem('userAvatars', JSON.stringify(userAvatars));
-      } else {
-        const userAvatars = { ...JSON.parse(avatars) };
-        userAvatars[userEmail] = fileReader.result;
-        localStorage.setItem('userAvatars', JSON.stringify(userAvatars));
-      }
+    if (!fileReader.result) {
+      return;
     }
+
+    localStorage.setItem(
+      'userAvatars',
+      JSON.stringify({
+        ...(avatars ? JSON.parse(avatars) : {}),
+        [userEmail]: fileReader.result,
+      }),
+    );
   };
   fileReader.readAsDataURL(userFile);
 };
@@ -30,33 +31,37 @@ export function useEdit(user: IUser) {
   const [error, setError] = useState<string>();
   const { handleSubmit, reset } = useFormContext<Inputs>();
   const { users } = useGetUsers();
-  const [updateUser, { isError }] = useUpdateUserMutation();
+  const [updateUser] = useUpdateUserMutation();
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = async ({
     conf_password,
+    avatar,
     ...data
   }) => {
     const userEmail = data.email;
-    const userFile = data.avatar[0];
+    const userFile = avatar && avatar[0];
     const findUser = users && users.find(user => user.email === userEmail);
+
     if (findUser && findUser.id !== user.id) {
-      setError(`Пользователь с почтой ${userEmail} уже сущестует.`);
+      setError(`Пользователь с указанной почтой уже сущестует.`);
       return;
     }
     localStorage.setItem('token', btoa(`${userEmail}:${data.password}`));
 
-    userFile && setAvatar(userFile, userEmail);
+    if (userFile) setAvatar(userFile, userEmail);
 
-    await updateUser({
-      ...data,
-      id: user.id,
-      tel: data.tel.replace(/\s+/g, '').toString(),
-    }).unwrap();
-
-    isError && setError('Ошибка на сервере. Повторите попытку еще раз');
-    navigate('/profile');
-    reset();
+    try {
+      await updateUser({
+        ...data,
+        id: user.id,
+        tel: data.tel.replace(/\s+/g, '').toString(),
+      }).unwrap();
+      navigate('/profile');
+      reset();
+    } catch {
+      setError('Ошибка на сервере. Повторите попытку еще раз');
+    }
   };
 
   return { onSubmit: handleSubmit(onSubmit), error };

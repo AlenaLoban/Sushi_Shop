@@ -1,16 +1,15 @@
 import React from 'react';
-import { useFormContext } from 'react-hook-form';
+import { FieldError, Merge, FieldErrorsImpl } from 'react-hook-form';
 import style from '../../scss/index.module.scss';
+import { Inputs } from '../../../features/auth/types';
 
 type IProps = {
-  name: string;
-  className?: string;
+  error: FieldError | Merge<FieldError, FieldErrorsImpl<Inputs>> | undefined;
 };
-const InputError: React.FC<IProps> = ({ name }) => {
-  const { formState } = useFormContext();
+const InputError: React.FC<IProps> = ({ error }) => {
   return (
     <div className={style.inputError}>
-      <>{formState.errors?.[name]?.message}</>
+      {error?.message}
     </div>
   );
 };

@@ -24,7 +24,6 @@
   flex: 0 0 55%;
   display: flex;
   flex-direction: column;
-
   gap: 10px;
 
   &__title {
@@ -54,11 +53,10 @@
     border-radius: 50px;
     padding: 5px;
     display: flex;
-    &__icon{
+    &__icon {
       position: relative;
       left: -0.1px;
-      top: 0.4px
-
+      top: 0.4px;
     }
 
     &:active {
@@ -66,6 +64,7 @@
     }
     &:disabled {
       background-color: #131313;
+      cursor: not-allowed;
       &:active {
         transform: none;
       }

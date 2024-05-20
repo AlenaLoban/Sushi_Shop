@@ -23,6 +23,7 @@ const ProductFilter: React.FC = () => {
   const dispatch = useAppDispatch();
   const { sort, spicy } = useAppSelector(selectFilter);
   const ref = useRef<HTMLDivElement>(null);
+  
   const handleClickOutside = (): void => {
     setOpen(false);
   };
@@ -36,10 +37,10 @@ const ProductFilter: React.FC = () => {
   return (
     <div className={style.sort} ref={ref}>
       <div className={style.sort__placeholder}>
-        {open ? <TiArrowSortedDown /> : <TiArrowSortedUp />}
-        <p>
-          сортировка по: <span onClick={() => setOpen(!open)}>{sort.name}</span>
-        </p>
+        <div className={style.sort__placeholder__icon}>
+          {open ? <TiArrowSortedDown /> : <TiArrowSortedUp />}
+        </div>
+        <p onClick={() => setOpen(!open)}>сортировка по: {sort.name}</p>
       </div>
       {open && (
         <div className={style.popup}>
@@ -53,7 +54,10 @@ const ProductFilter: React.FC = () => {
         </div>
       )}
       <div className={style.sort__checkBox}>
-        <div onClick={() => dispatch(setOnlySpicy(!spicy))}>
+        <div
+          onClick={() => dispatch(setOnlySpicy(!spicy))}
+          className={style.sort__checkBox__icon}
+        >
           {spicy ? <MdOutlineCheckBox /> : <MdOutlineCheckBoxOutlineBlank />}
         </div>
         <p>острые</p>
