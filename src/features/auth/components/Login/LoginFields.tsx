@@ -17,7 +17,9 @@ const LoginFields = () => {
           register={register}
           error={err?.email}
         />
-        <InputError error={err?.email} />
+        <InputError>
+          <>{err?.email?.message}</>
+        </InputError>
       </InputWrapper>
 
       <InputWrapper label="Пароль" name="password">
@@ -27,7 +29,9 @@ const LoginFields = () => {
           register={register}
           error={err?.password}
         />
-        <InputError error={err?.password} />
+        <InputError>
+          <>{err?.password?.message}</>
+        </InputError>
       </InputWrapper>
     </div>
   );

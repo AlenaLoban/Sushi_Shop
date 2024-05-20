@@ -1,16 +1,10 @@
 import React from 'react';
-import { FieldError, Merge, FieldErrorsImpl } from 'react-hook-form';
 import style from '../../scss/index.module.scss';
-import { Inputs } from '../../../features/auth/types';
 
 type IProps = {
-  error: FieldError | Merge<FieldError, FieldErrorsImpl<Inputs>> | undefined;
+  children: React.ReactNode;
 };
-const InputError: React.FC<IProps> = ({ error }) => {
-  return (
-    <div className={style.inputError}>
-      {error?.message}
-    </div>
-  );
+const InputError: React.FC<IProps> = ({ children }) => {
+  return <div className={style.inputError}>{children}</div>;
 };
 export default InputError;
