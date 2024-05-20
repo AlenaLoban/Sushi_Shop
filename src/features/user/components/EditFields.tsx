@@ -8,7 +8,7 @@ import { useFormContext } from 'react-hook-form';
 
 const EditFields: React.FC = () => {
   const { register, formState } = useFormContext();
-  const error = formState.errors?.avatar;
+  const err = formState.errors?.avatar;
 
   const hiddenInputRef = useRef<HTMLInputElement>(null);
 
@@ -22,13 +22,15 @@ const EditFields: React.FC = () => {
         <p onClick={onUpload}>Загрузить фото + </p>
         <InputElement
           register={register}
-          error={formState.errors}
+          error={err}
           type="file"
           name="avatar"
           accept="image/*,.png,.jpg,.gif,.web"
           hiddenInputRef={hiddenInputRef}
         />
-        <InputError error={error} />
+        <InputError>
+          <>{err?.message}</>
+        </InputError>
       </InputWrapper>
 
       <BaseFields />
