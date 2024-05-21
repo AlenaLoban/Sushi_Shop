@@ -18,9 +18,9 @@ const BaseFields: React.FC = () => {
           register={register}
           error={err?.name}
         />
-        <InputError>
-          <>{err?.name?.message}</>
-        </InputError>
+        {err?.name?.message && (
+          <InputError>{err.name.message as string}</InputError>
+        )}
       </InputWrapper>
 
       <InputWrapper label="Почта" name="email">
@@ -31,9 +31,9 @@ const BaseFields: React.FC = () => {
           register={register}
           error={err?.email}
         />
-        <InputError>
-          <>{err?.email?.message}</>
-        </InputError>
+        {err?.email?.message && (
+          <InputError>{err.email.message as string}</InputError>
+        )}
       </InputWrapper>
 
       <InputWrapper label="Телефон" name="tel">
@@ -44,9 +44,9 @@ const BaseFields: React.FC = () => {
           register={register}
           error={err?.tel}
         />
-        <InputError>
-          <>{err?.tel?.message}</>
-        </InputError>
+        {err?.tel?.message && (
+          <InputError>{err.tel.message as string}</InputError>
+        )}
       </InputWrapper>
 
       <InputWrapper label="Пароль" name="password">
@@ -56,9 +56,9 @@ const BaseFields: React.FC = () => {
           register={register}
           error={err?.password}
         />
-        <InputError>
-          <>{err?.password?.message}</>
-        </InputError>
+        {err?.password?.message && (
+          <InputError>{err.password.message as string}</InputError>
+        )}
       </InputWrapper>
 
       <InputWrapper label="Подтвердите пароль" name="conf_password">
@@ -68,9 +68,9 @@ const BaseFields: React.FC = () => {
           register={register}
           error={err?.conf_password}
         />
-        <InputError>
-          <>{err?.conf_password?.message}</>
-        </InputError>
+        {err?.conf_password?.message && (
+          <InputError>{err.conf_password.message as string}</InputError>
+        )}
       </InputWrapper>
     </div>
   );
