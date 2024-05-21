@@ -28,9 +28,7 @@ const EditFields: React.FC = () => {
           accept="image/*,.png,.jpg,.gif,.web"
           hiddenInputRef={hiddenInputRef}
         />
-        <InputError>
-          <>{err?.message}</>
-        </InputError>
+        {err?.message && <InputError>{err.message as string}</InputError>}
       </InputWrapper>
 
       <BaseFields />
