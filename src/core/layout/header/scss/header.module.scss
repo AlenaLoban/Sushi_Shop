@@ -201,7 +201,7 @@ header {
     gap: 10px;
     &__cart {
       position: relative;
-
+      cursor:pointer;
       transition: color 1s ease 0.3s;
       &:hover {
         color: gray;

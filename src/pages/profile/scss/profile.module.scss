@@ -64,10 +64,10 @@
       text-align: center;
     }
     &__buttonBox {
-      width: 45%;
       display: flex;
       text-align: center;
-      justify-content: space-around;
+      gap: 10px;
+
       button {
         padding: 5px 20px;
         font-size: 16px;
@@ -79,8 +79,22 @@
         }
       }
     }
+    @media (max-width: 550px) {
+      gap: 8px;
+      &__body {
+        gap: 5px;
+        font-size: 14px;
+      }
+      &__buttonBox {
+        button {
+          padding: 3px 7px;
+          font-size: 12px;
+        }
+      }
+    }
   }
 }
+
 .userProfile {
   &__user {
     display: flex;

@@ -4,7 +4,7 @@ export type Inputs = {
   tel: string;
   password: string;
   conf_password: string;
-  avatar?: any;
+  avatar?: FileList | undefined;
 };
 export type InputsLog = {
   email: string;
