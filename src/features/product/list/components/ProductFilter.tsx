@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { useOnClickOutside } from 'usehooks-ts';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import { useAppDispatch, useAppSelector } from '../../../../core/store/hooks';
 import {
@@ -13,6 +12,7 @@ import {
   MdOutlineCheckBoxOutlineBlank,
   MdOutlineCheckBox,
 } from 'react-icons/md';
+import { useClickOutSide } from '../../../../hooks/useClickOutside';
 
 const ProductFilter: React.FC = () => {
   const sortList = [
@@ -23,7 +23,7 @@ const ProductFilter: React.FC = () => {
   const dispatch = useAppDispatch();
   const { sort, spicy } = useAppSelector(selectFilter);
   const ref = useRef<HTMLDivElement>(null);
-  
+
   const handleClickOutside = (): void => {
     setOpen(false);
   };
@@ -32,7 +32,7 @@ const ProductFilter: React.FC = () => {
     dispatch(setSort(obj));
     setOpen(!open);
   };
-  useOnClickOutside(ref, handleClickOutside);
+  useClickOutSide(handleClickOutside, ref);
 
   return (
     <div className={style.sort} ref={ref}>

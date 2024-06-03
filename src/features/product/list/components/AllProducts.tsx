@@ -1,20 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Product from '../../view/Index';
+import React, { useEffect, useRef } from 'react';
+import { Product } from '../../';
 import style from '../scss/products.module.scss';
 import Skeleton from './Skeleton';
 import { useGetProducts } from '../hooks/useGetProducts';
-import { IItem } from '../../../../hooks/types/data';
+import { useAppDispatch } from '../../../../core/store/hooks';
+import { setPage } from '../../../filterSlice';
 
-const AllProducts: React.FC = () => {
-  const { data, isError, isLoading, setPage } = useGetProducts();
 
-  const [allProducts, setAllProducts] = useState<IItem[]>([]);
+export const AllProducts: React.FC = () => {
 
-  useEffect(() => {
-    if (data?.length) {
-      setAllProducts(prev => [...prev, ...data]);
-    }
-  }, [data]);
+  const { isError, isLoading, allProducts } = useGetProducts();
+  const dispatch = useAppDispatch();
 
   const ref = useRef(null);
 
@@ -24,10 +20,11 @@ const AllProducts: React.FC = () => {
     threshold: 1.0,
   };
   useEffect(() => {
-
     const observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        setPage(prev => prev + 1);
+        if (allProducts?.length >= 12) {
+          dispatch(setPage());
+        }
       }
     }, options);
 
@@ -36,7 +33,7 @@ const AllProducts: React.FC = () => {
     return () => {
       if (ref.current) observer.unobserve(ref.current);
     };
-  }, []);
+  }, [allProducts]);
 
   return (
     <div className={style.wrapper}>
@@ -56,4 +53,3 @@ const AllProducts: React.FC = () => {
     </div>
   );
 };
-export default AllProducts;

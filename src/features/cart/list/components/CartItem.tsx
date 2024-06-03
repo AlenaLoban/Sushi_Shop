@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../../../core/store/hooks';
 import { IItem } from '../../../../hooks/types/data';
 import React from 'react';
 
-const CartProduct: React.FC<IItem> = props => {
+ const CartItem: React.FC<IItem> = props => {
   const dispatch = useAppDispatch();
   const { id, title, price, imageUrl, count } = props;
 
@@ -54,4 +54,4 @@ const CartProduct: React.FC<IItem> = props => {
     </div>
   );
 };
-export default CartProduct;
+export default CartItem;

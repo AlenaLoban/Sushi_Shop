@@ -1,0 +1,1 @@
+export {WrapperRegisterForm} from './components/Registration/RegisterForm'
