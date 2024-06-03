@@ -2,24 +2,27 @@ import React, { useState, useRef } from 'react';
 import style from '../scss/header.module.scss';
 import { SlCallIn } from 'react-icons/sl';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { useOnClickOutside } from 'usehooks-ts';
+import { useClickOutSide } from '../../../../hooks/useClickOutside';
 
 const HeaderCallInfo: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
   const handleClickOutside = (): void => setOpen(false);
-  useOnClickOutside(ref, handleClickOutside);
+  useClickOutSide(handleClickOutside, ref);
 
   return (
     <div className={style.header__bottom__call} ref={ref}>
       <SlCallIn />
       <a href="tel:#7845">7845</a>
-      {open ? (
-        <IoIosArrowDown onClick={() => setOpen(!open)} />
-      ) : (
-        <IoIosArrowUp onClick={() => setOpen(!open)} />
-      )}
+      <p
+        onClick={() => {
+          setOpen(prev => !prev);
+        }}
+      >
+        {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
+      </p>
+
       {open && (
         <div className={style.header__bottom__call__popup}>
           <div>
