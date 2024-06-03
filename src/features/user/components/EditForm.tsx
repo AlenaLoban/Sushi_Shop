@@ -42,7 +42,7 @@ const EditForm: React.FC<IProps> = ({ user, setPreAvatar }) => {
     </form>
   );
 };
-const WrapperEditForm: React.FC<IProps> = ({ user, setPreAvatar }) => {
+export const WrapperEditForm: React.FC<IProps> = ({ user, setPreAvatar }) => {
   const methods = useForm<Inputs>({
     defaultValues: {
       name: user.name,
@@ -62,4 +62,4 @@ const WrapperEditForm: React.FC<IProps> = ({ user, setPreAvatar }) => {
   );
 };
 
-export default WrapperEditForm;
+

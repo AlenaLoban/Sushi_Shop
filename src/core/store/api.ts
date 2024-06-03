@@ -4,6 +4,10 @@ export const baseApi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://65ae38e71dfbae409a744853.mockapi.io/",
+   
+    
   }),
+ 
   endpoints: () => ({}),
+  
 });

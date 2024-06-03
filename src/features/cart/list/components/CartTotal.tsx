@@ -4,7 +4,7 @@ import { useAppSelector } from '../../../../core/store/hooks';
 import { selectCart } from '../cartSlice';
 import Button from '../../../../core/ui/Button';
 
-const CartTotal: React.FC = () => {
+export const CartTotal: React.FC = () => {
   const { total } = useAppSelector(selectCart);
   return (
     <div className={style.total}>
@@ -21,4 +21,4 @@ const CartTotal: React.FC = () => {
     </div>
   );
 };
-export default CartTotal;
+

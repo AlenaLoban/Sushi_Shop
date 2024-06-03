@@ -6,10 +6,10 @@ import {
   selectCart,
   clearCartItems,
 } from '../../../../features/cart/list/cartSlice';
-import CartItems from '../../../../features/cart/list/components/CartItems';
-import CartTotal from '../../../../features/cart/list/components/CartTotal';
+import {CartItems} from '../../../../features/cart';
+import {CartTotal} from '../../../../features/cart';
 import React, { useState } from 'react';
-import CartEmpty from '../../../../features/cart/list/components/CartEmpty';
+import {CartEmpty} from '../../../../features/cart';
 
 const HeaderCart: React.FC = () => {
   const [open, setOpen] = useState(false);

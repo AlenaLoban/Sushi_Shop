@@ -10,7 +10,7 @@ import { schema } from './schema';
 import BaseFields from '../../../../core/ui/BaseFields';
 import { useRegistration } from '../../hooks/useRegistration';
 
-const RegisterForm: React.FC = () => {
+ const RegisterForm: React.FC = () => {
   const { formState } = useFormContext();
   const { onSubmit, error } = useRegistration();
 
@@ -28,7 +28,7 @@ const RegisterForm: React.FC = () => {
     </form>
   );
 };
-const WrapperEditForm: React.FC = () => {
+export const WrapperRegisterForm: React.FC = () => {
   const methods = useForm<Inputs>({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -41,4 +41,4 @@ const WrapperEditForm: React.FC = () => {
   );
 };
 
-export default WrapperEditForm;
+

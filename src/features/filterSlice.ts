@@ -13,10 +13,12 @@ interface FilterState {
   category: number;
   sort: SortType;
   spicy: boolean;
+  page: number ;
   loading: boolean;
   error: string | null;
 }
 const initialState: FilterState = {
+  page:1,
   search: '',
   category: 0,
   sort: { name: 'рейтингу', sort: 'rating', order: 'desc' },
@@ -40,16 +42,21 @@ export const filterSlice = createSlice({
     },
     setCategory: (state, action: PayloadAction<number>) => {
       state.category = action.payload;
+      state.page = 1
     },
     setOnlySpicy: (state, action: PayloadAction<boolean>) => {
       state.spicy = action.payload;
     },
+    setPage:(state)=>{
+      state.page = state.page+1
+    }
   },
 });
-export const { setSort, setCategory, setOnlySpicy, setSearch, deleteSearch } =
+export const { setSort, setCategory, setOnlySpicy, setSearch, deleteSearch, setPage } =
   filterSlice.actions;
 
 export const selectFilter = (state: RootState) => state.filter;
+export const selectPage = (state: RootState) => state.filter.page;
 export const selectSort = (state: RootState) => state.filter.sort;
 export const selectCategory = (state: RootState) => state.filter.category;
 export const selectSearch = (state: RootState) => state.filter.search;
