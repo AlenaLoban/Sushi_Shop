@@ -9,6 +9,7 @@ export type SortType = {
 };
 
 interface FilterState {
+  search: string;
   category: number;
   sort: SortType;
   spicy: boolean;
@@ -16,6 +17,7 @@ interface FilterState {
   error: string | null;
 }
 const initialState: FilterState = {
+  search: '',
   category: 0,
   sort: { name: 'рейтингу', sort: 'rating', order: 'desc' },
   spicy: false,
@@ -27,6 +29,12 @@ export const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
+    deleteSearch: state => {
+      state.search = '';
+    },
     setSort: (state, action: PayloadAction<SortType>) => {
       state.sort = action.payload;
     },
@@ -38,9 +46,11 @@ export const filterSlice = createSlice({
     },
   },
 });
-export const { setSort, setCategory, setOnlySpicy } = filterSlice.actions;
+export const { setSort, setCategory, setOnlySpicy, setSearch, deleteSearch } =
+  filterSlice.actions;
 
 export const selectFilter = (state: RootState) => state.filter;
 export const selectSort = (state: RootState) => state.filter.sort;
 export const selectCategory = (state: RootState) => state.filter.category;
+export const selectSearch = (state: RootState) => state.filter.search;
 export default filterSlice.reducer;

@@ -6,6 +6,7 @@ import cn from 'classnames';
 import React from 'react';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 import { useLocation } from 'react-router-dom';
+import SearchInput from '../../features/product/list/components/SearchInput';
 
 const Catalog: React.FC = () => {
   const location = useLocation();
@@ -22,6 +23,7 @@ const Catalog: React.FC = () => {
         )}
       >
         <ProductCategory />
+        <SearchInput/>
         <ProductFilter />
       </div>
       <AllProducts />
