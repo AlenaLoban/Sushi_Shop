@@ -3,6 +3,7 @@ import { IItem } from '../../../hooks/types/data';
 import { SortType } from '../../filterSlice';
 
 interface filterParams {
+  search: string;
   category: number | string;
   sort: SortType;
   spicy: boolean;
@@ -13,10 +14,10 @@ interface filterParams {
 const productApi = baseApi.injectEndpoints({
   endpoints: build => ({
     getProducts: build.query<IItem[], filterParams>({
-      query: ({ category, sort, spicy, page, limit }) =>
+      query: ({ category, sort, spicy, page, limit, search }) =>
         `/items?${
           category ? `category=${category}` : ''
-        }${sort ? `&sortBy=${sort.sort}&order=${sort.order}` : ''}${spicy ? `&spicy=${spicy}` : ''}${page ? `&page=${page}` : ''}${limit ? `&limit=${limit}` : ''}`,
+        }${search ? `&search=${search}` : ''}${sort ? `&sortBy=${sort.sort}&order=${sort.order}` : ''}${spicy ? `&spicy=${spicy}` : ''}${`&page=${page}`}${limit ? `&limit=${limit}` : ''}`,
     }),
   }),
   overrideExisting: false,
