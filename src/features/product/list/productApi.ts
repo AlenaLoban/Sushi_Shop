@@ -1,25 +1,48 @@
+// import { baseApi } from '../../../core/store/api';
+// import { IItem } from '../../../hooks/types/data';
+// import { SortType } from '../../filterSlice';
+
+// interface filterParams {
+//   search: string;
+//   category: number | string;
+//   sort: SortType;
+//   spicy: boolean;
+//   page: number;
+//   limit: number;
+// }
+
+// const productApi = baseApi.injectEndpoints({
+//   endpoints: build => ({
+//     getProducts: build.query<IItem[], filterParams>({
+//       query: ({ category, sort, spicy, page, limit, search }) =>
+//         `/items?${
+//           category ? `category=${category}` : ''
+//         }${search ? `&search=${search}` : ''}${sort ? `&sortBy=${sort.sort}&order=${sort.order}` : ''}${spicy ? `&spicy=${spicy}` : ''}${`&page=${page}`}${limit ? `&limit=${limit}` : ''}`,
+//     }),
+//   }),
+//   overrideExisting: false,
+// });
+
+// export const { useGetProductsQuery } = productApi;
+
 import { baseApi } from '../../../core/store/api';
 import { IItem } from '../../../hooks/types/data';
-import { SortType } from '../../filterSlice';
 
-interface filterParams {
-  category: number | string;
-  sort: SortType;
-  spicy: boolean;
-  page: number;
-  limit: number;
-}
+export const apiController = new AbortController();
+
 
 const productApi = baseApi.injectEndpoints({
   endpoints: build => ({
-    getProducts: build.query<IItem[], filterParams>({
-      query: ({ category, sort, spicy, page, limit }) =>
-        `/items?${
-          category ? `category=${category}` : ''
-        }${sort ? `&sortBy=${sort.sort}&order=${sort.order}` : ''}${spicy ? `&spicy=${spicy}` : ''}${page ? `&page=${page}` : ''}${limit ? `&limit=${limit}` : ''}`,
+    getProducts: build.query<IItem[], string>({
+      query: queryParams => ({
+        url: `/items?${queryParams}`,
+        signal: apiController.signal,
+
+      })
+     
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetProductsQuery } = productApi;
+export const { useGetProductsQuery, useLazyGetProductsQuery } = productApi;

@@ -4,7 +4,7 @@ import { selectCart } from '../cartSlice';
 import { useAppSelector } from '../../../../core/store/hooks';
 import React from 'react';
 
-const CartItems: React.FC = () => {
+export const CartItems: React.FC = () => {
   const { cartItems } = useAppSelector(selectCart);
 
 
@@ -16,4 +16,3 @@ const CartItems: React.FC = () => {
     </div>
   );
 };
-export default CartItems;

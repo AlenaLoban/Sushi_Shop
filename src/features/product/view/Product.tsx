@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../../core/store/hooks';
 import { useState } from 'react';
 import { GiChiliPepper } from 'react-icons/gi';
 
-const Product: React.FC<IItem> = props => {
+export const Product: React.FC<IItem> = props => {
   const { title, imageUrl, price, weight, consist, spicy } = props;
   const [isAddToCart, setIsAddToCart] = useState(false);
   const dispatch = useAppDispatch();
@@ -54,4 +54,4 @@ const Product: React.FC<IItem> = props => {
     </div>
   );
 };
-export default Product;
+// export default Product;

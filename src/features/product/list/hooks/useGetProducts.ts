@@ -1,104 +1,34 @@
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../../../core/store/hooks';
-import {
-  selectFilter,
-  setCategory,
-  setOnlySpicy,
-  setSort,
-} from '../../../filterSlice';
 import { useGetProductsQuery } from '../productApi';
-
-const limit = 12;
-
-const productsDictionary = [
-  { notspicy: 28, spicy: 9 },
-  { notspicy: 13, spicy: 2 },
-  { notspicy: 6, spicy: 2 },
-  { notspicy: 5, spicy: 4 },
-  { notspicy: 4, spicy: 1 },
-];
+import { useState, useEffect } from 'react';
+import { useAppSelector } from '../../../../core/store/hooks';
+import { selectPage, selectCategory } from '../../../filterSlice';
+import { IItem } from '../../../../hooks/types/data';
+import { useSetQuery } from './useSetQuery';
 
 export function useGetProducts() {
-  const [page, setPage] = useState(1);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const { category, sort, spicy } = useAppSelector(selectFilter);
-  const {
-    data = [],
-    isError,
-    isLoading,
-  } = useGetProductsQuery({ category, sort, spicy, page, limit });
+  const [allProducts, setAllProducts] = useState<IItem[]>([]);
 
-  const dispatch = useAppDispatch();
+  const queryParams = useSetQuery();
 
-  const pageQnt = Math.ceil(
-   productsDictionary[category][spicy ? 'spicy' : 'notspicy'] / limit,
-  );
+  const { data, isError, isLoading } = useGetProductsQuery(queryParams);
 
-  const setPageQuery = (pageParams: string) => {
-    if (!pageParams) {
-      setPage(1);
-      return;
-    }
-    setPage(parseInt(pageParams));
-  };
-
-  const setCategoryQuery = (categoryParams: string) => {
-    if (!categoryParams) {
-      return;
-    }
-    dispatch(setCategory(parseInt(categoryParams)));
-  };
-
-  const setSortQuery = (sortByParams: string) => {
-    if (!sortByParams) {
-      return;
-    }
-    dispatch(
-      setSort(
-        sortByParams === 'price'
-          ? { name: 'цене', sort: sortByParams, order: 'esc' }
-          : { name: 'рейтингу', sort: sortByParams, order: 'desk' },
-      ),
-    );
-  };
-
-  const setSpicyQuery = (spicyParams: string) => {
-    if (spicyParams === 'true') dispatch(setOnlySpicy(!!spicyParams));
-  };
+  const page = useAppSelector(selectPage);
+  const category = useAppSelector(selectCategory);
 
   useEffect(() => {
-    if (page > pageQnt) setPage(1);
-
-    setSearchParams({
-      page: page.toString(),
-      category: category.toString(),
-      sortBy: sort.sort.toString(),
-      order: sort.order.toString(),
-      spicy: spicy.toString(),
-    });
-
-  }, [page, category, sort, spicy]);
-
-  useEffect(() => {
-    const pageParams = searchParams.get('page') || '';
-    const categoryParams = searchParams.get('category') || '';
-    const sortByParams = searchParams.get('sortBy') || '';
-    const spicyParams = searchParams.get('spicy') || '';
-
-    setPageQuery(pageParams);
-    setCategoryQuery(categoryParams);
-    setSortQuery(sortByParams);
-    setSpicyQuery(spicyParams);
-
-  }, []);
+    if (data?.length) {
+      if (!category && page !== 1) {
+        setAllProducts(prev => [...prev, ...data]);
+      } else {
+        setAllProducts(data);
+      }
+    }
+  }, [data, category]);
 
   return {
     data,
     isError,
     isLoading,
-    page,
-    setPage,
-    pageQnt,
+    allProducts,
   };
 }

@@ -3,11 +3,12 @@ import { SlBasket } from 'react-icons/sl';
 import { clearCartItems } from '../list/cartSlice';
 import { useAppDispatch } from '../../../core/store/hooks';
 import React from 'react';
-import CartTotal from '../list/components/CartTotal';
-import CartItems from '../list/components/CartItems';
+import {CartTotal} from '../';
+import {CartItems} from '../';
 
 
-const FullCart: React.FC = () => {
+export const FullCart: React.FC = () => {
+
   const dispatch = useAppDispatch();
 
   return (
@@ -25,4 +26,4 @@ const FullCart: React.FC = () => {
     </div>
   );
 };
-export default FullCart;
+
