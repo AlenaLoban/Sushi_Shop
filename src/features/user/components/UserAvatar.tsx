@@ -7,7 +7,7 @@ type IProps = {
   preAvatar?: string;
 };
 
-const UserAvatar: React.FC<IProps> = ({ preAvatar }) => {
+export const UserAvatar: React.FC<IProps> = ({ preAvatar }) => {
    const {userAvatar} = useGetAvatar()
 
   return (
@@ -16,6 +16,6 @@ const UserAvatar: React.FC<IProps> = ({ preAvatar }) => {
     </div>
   );
 };
-export default UserAvatar;
+
 
 

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React from 'react';
 import style from '../scss/header.module.scss';
-import UserAvatar from '../../../../features/user/components/UserAvatar';
+import {UserAvatar} from '../../../../features/user';
 
 const HeaderAuth: React.FC = () => {
   const navigate = useNavigate();

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import style from '../../../../core/scss/index.module.scss';
 import emptyCart from '/1.webp';
 
-const CartEmpty: React.FC = () => {
+export const CartEmpty: React.FC = () => {
    
   return (
     <div className={style.emptyCart}>
@@ -16,4 +16,4 @@ const CartEmpty: React.FC = () => {
     </div>
   );
 };
-export default CartEmpty;
+

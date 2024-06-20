@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 .pagination {
   align-self: center;
@@ -53,5 +54,27 @@
         background-color: #683436;
       }
     }
+  }
+}
+
+.searchInput {
+  position: relative;
+
+  input {
+    padding: 15px 30px;
+  }
+
+  &__iconSearch,
+  &__iconDelete {
+    position: absolute;
+    top: 18px;
+    z-index: 3;
+    color: #e64d45;
+  }
+  &__iconSearch {
+    left: 10px;
+  }
+  &__iconDelete {
+    right: 15px;
   }
 }
