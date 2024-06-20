@@ -6,6 +6,7 @@ import Button from '../../../../core/ui/Button';
 
 const CartTotal: React.FC = () => {
   const { total } = useAppSelector(selectCart);
+  if(total>30) throw new Error('Count is too big')
   return (
     <div className={style.total}>
       <div className={style.total__text}>

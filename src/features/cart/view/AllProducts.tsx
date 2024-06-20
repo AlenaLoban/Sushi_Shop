@@ -6,6 +6,7 @@ import React from 'react';
 import CartTotal from '../list/components/CartTotal';
 import CartItems from '../list/components/CartItems';
 
+
 const FullCart: React.FC = () => {
   const dispatch = useAppDispatch();
 
