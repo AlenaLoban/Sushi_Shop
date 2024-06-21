@@ -7,6 +7,7 @@ import React from 'react';
 export const CartItems: React.FC = () => {
   const { cartItems } = useAppSelector(selectCart);
 
+
   return (
     <div className={style.cartProducts}>
       {cartItems.map(item => (
