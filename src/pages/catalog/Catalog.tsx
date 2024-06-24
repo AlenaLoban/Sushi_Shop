@@ -1,12 +1,12 @@
 import style from './scss/catalog.module.scss';
 import ProductCategory from '../../features/category/ProductCategory';
 import ProductFilter from '../../features/product/list/components/ProductFilter';
-import {AllProducts} from '../../features/product';
+import { AllProducts } from '../../features/product';
 import cn from 'classnames';
 import React from 'react';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 import { useLocation } from 'react-router-dom';
-import {SearchInput} from '../../features/product';
+import { SearchInput } from '../../features/product';
 
 const Catalog: React.FC = () => {
   const location = useLocation();
@@ -23,7 +23,7 @@ const Catalog: React.FC = () => {
         )}
       >
         <ProductCategory />
-        <SearchInput/>
+        <SearchInput />
         <ProductFilter />
       </div>
       <AllProducts />

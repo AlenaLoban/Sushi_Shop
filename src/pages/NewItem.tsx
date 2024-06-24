@@ -1,17 +1,15 @@
 import style from '../core/scss/index.module.scss';
+import { useParams } from 'react-router-dom';
 import { useGetProductQuery } from '../features/product/itemApi';
 import ButtonAddToCart from '../features/product/view/ButtonAddToCart';
 import { RiScales2Line } from 'react-icons/ri';
 import cn from 'classnames';
 
-type IdetailItem = {
-  id: number;
-};
 
-const DetailItem: React.FC<IdetailItem> = ({ id }) => {
-  const itemId = id.toString();
+const DetailItem = () => {
+  const { id } = useParams();
+  const { data, isError } = useGetProductQuery(id);
 
-  const { data, isError } = useGetProductQuery(itemId);
 
   return (
     <div className={cn(style.container, style.detailItem)}>
@@ -21,7 +19,7 @@ const DetailItem: React.FC<IdetailItem> = ({ id }) => {
         <h1>ServerError</h1>
       ) : (
         !!data && (
-          <div className={style.detailItemInfo} style={{color:'red'}}>
+          <div className={style.detailItemInfo}>
             <div
               style={{ backgroundImage: `url(${data.imageUrl})` }}
               className={style.detailItemInfo__img}

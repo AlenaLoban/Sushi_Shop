@@ -9,7 +9,7 @@ import LoginPage from '../../pages/Login';
 import RegisterPage from '../../pages/Register';
 import EditProfile from '../../pages/profile/EditProfile';
 import UserProfile from '../../pages/profile/User';
-// import DetailItem from '../../pages/DetailItem';
+import DetailItem from '../../pages/DetailItem';
 
 
 function Routing() {
@@ -19,7 +19,7 @@ function Routing() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="catalog" element={<Catalog />} />
-        {/* <Route path="catalog/:id" element={<DetailItem />} /> */}
+        <Route path="catalog/:id" element={<DetailItem />} />
         <Route path="cart" element={<Cart />} />
         <Route path="user" element={<UserProfile />} />
         <Route path="editProfile" element={<EditProfile />} />
