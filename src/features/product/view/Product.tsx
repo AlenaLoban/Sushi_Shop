@@ -4,51 +4,15 @@ import cn from 'classnames';
 import { RiScales2Line } from 'react-icons/ri';
 import { GiChiliPepper } from 'react-icons/gi';
 import ButtonAddToCart from './ButtonAddToCart';
-import {  useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import NewItem from '../../../pages/NewItem';
-import WrapperPortal from '../../../pages/WrapperPortal';
-import DetailItem from '../../../pages/NewItem';
-
-
+import { useState } from 'react';
+import WrapperPortal from '../../../pages/detailItem/WrapperPortal';
 
 export const Product: React.FC<IItem> = props => {
   const { title, imageUrl, price, weight, consist, spicy, id } = props;
-  const ref = useRef<null | Window>(null);
-  const [open, setOpen] = useState(false)
-  const [div, setDiv] = useState<any>(null);
+  const [open, setOpen] = useState(false);
 
-  // const handleClick = ()=>{
-  // //  const newPage = window.open(`http://localhost:5173/Sushi_Shop/#/catalog/${id}`,'_blank')
-  //    const newPage = window.open(``,'_blank')
-  //   //  const detailContainer = ref.current.document.createElement('div')
-  //   //  createPortal(<DetailItem/>, detailContainer)
-  //    ref.current = newPage
-  //    if(ref.current){
-  //     ref.current.document.write('<div id="productDetailContainer"></div>')
-  //     // ref.current.document.createElement('<div id="productDetailContainer"></div>')
-
-  //     const detailContainer = ref.current.document.getElementById('productDetailContainer')
-  //     localStorage.setItem('divContainer', JSON.stringify(detailContainer))
-  //     if(detailContainer) {
-  //       createPortal(<DetailItem/>, detailContainer)
-  //     console.log('f')}
-
-  //   }
-  //   //  const detailContainer = newPage.document.createElement('div')
-
-  //   //  newPage.document.write('<div id="productDetailContainer"></div>')
-
-  //   // newPage.onload = function() {
-  //   //   if(newPage) newPage.document.write('<div id="productDetailContainer"></div>')
-  //   //   // createPortal(<DetailItem />, newPage.document.body)
-
-  //   // }
-
-  // }
   const handleClick = () => {
-    setOpen(prev=>!prev)
-
+    setOpen(prev => !prev);
   };
 
   return (
@@ -84,7 +48,7 @@ export const Product: React.FC<IItem> = props => {
           </div>
         </div>
       </div>
-      {open && <WrapperPortal id={id}/>}
+      {open && <WrapperPortal id={id} />}
     </div>
   );
 };

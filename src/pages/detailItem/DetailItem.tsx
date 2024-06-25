@@ -1,6 +1,6 @@
-import style from '../core/scss/index.module.scss';
-import { useGetProductQuery } from '../features/product/itemApi';
-import ButtonAddToCart from '../features/product/view/ButtonAddToCart';
+import style from '../../core/scss/index.module.scss';
+import { useGetProductQuery } from '../../features/product/itemApi';
+import ButtonAddToCart from '../../features/product/view/ButtonAddToCart';
 import { RiScales2Line } from 'react-icons/ri';
 import cn from 'classnames';
 
@@ -14,14 +14,12 @@ const DetailItem: React.FC<IdetailItem> = ({ id }) => {
   const { data, isError } = useGetProductQuery(itemId);
 
   return (
-    <div className={cn(style.container, style.detailItem)}>
-      <p>HHHH</p>
-
+    <div className={cn(style.detailItem)}>
       {isError ? (
         <h1>ServerError</h1>
       ) : (
         !!data && (
-          <div className={style.detailItemInfo} style={{color:'red'}}>
+          <div className={style.detailItemInfo}>
             <div
               style={{ backgroundImage: `url(${data.imageUrl})` }}
               className={style.detailItemInfo__img}
