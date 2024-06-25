@@ -229,3 +229,54 @@ select:-webkit-autofill:focus {
   margin: 0;
   display: none;
 }
+.detailItem {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.detailItemInfo {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 10px;
+  &__img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex: 50%;
+    padding: 0 0 50% 0;
+  }
+
+  &__body {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    &__button {
+      width: 50%;
+      padding: 10px 12px;
+    }
+  }
+  @media (max-width: 880px) {
+    h1 {
+      font-size: 28px;
+    }
+  }
+  @media (max-width: 540px) {
+    flex-direction: column;
+    gap: 15px;
+
+    &__img {
+      padding: 0 0 150px 0;
+      width: 100%;
+      background-size: center;
+    }
+    &__body {
+      &__button {
+        align-self: center;
+      }
+    }
+  }
+}

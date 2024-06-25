@@ -2,18 +2,17 @@ import style from './scss/index.module.scss';
 import { IItem } from '../../../hooks/types/data';
 import cn from 'classnames';
 import { RiScales2Line } from 'react-icons/ri';
-import { addItem } from '../../cart/list/cartSlice';
-import { useAppDispatch } from '../../../core/store/hooks';
-import { useState } from 'react';
 import { GiChiliPepper } from 'react-icons/gi';
+import ButtonAddToCart from './ButtonAddToCart';
+import { useState } from 'react';
+import WrapperPortal from '../../../pages/detailItem/WrapperPortal';
 
 export const Product: React.FC<IItem> = props => {
-  const { title, imageUrl, price, weight, consist, spicy } = props;
-  const [isAddToCart, setIsAddToCart] = useState(false);
-  const dispatch = useAppDispatch();
-  const handleAddtoCart = (props: IItem): void => {
-    dispatch(addItem(props));
-    setIsAddToCart(true);
+  const { title, imageUrl, price, weight, consist, spicy, id } = props;
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(prev => !prev);
   };
 
   return (
@@ -21,6 +20,7 @@ export const Product: React.FC<IItem> = props => {
       <div
         style={{ backgroundImage: `url(${imageUrl})` }}
         className={style.card__img}
+        onClick={handleClick}
       ></div>
       <div className={cn(style.card__info, style.info)}>
         <div className={style.info__top}>
@@ -30,6 +30,7 @@ export const Product: React.FC<IItem> = props => {
           </span>
           <p>{consist}</p>
         </div>
+
         <div className={style.info__bottom}>
           <p>
             {' '}
@@ -43,15 +44,11 @@ export const Product: React.FC<IItem> = props => {
                 currency: 'BYN',
               }).format(price)}
             </b>
-            <div className={style.button}>
-              <span onClick={() => handleAddtoCart(props)}>
-                {isAddToCart ? 'добавить ещё' : 'в корзину'}
-              </span>
-            </div>
+            <ButtonAddToCart props={props} className={style.button} />
           </div>
         </div>
       </div>
+      {open && <WrapperPortal id={id} />}
     </div>
   );
 };
-// export default Product;
